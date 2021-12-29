@@ -1,3 +1,6 @@
+import json
+from datetime import datetime
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import Screen, ScreenManager
@@ -12,7 +15,17 @@ class LoginScreen(Screen):
 
 class SignUpScreen(Screen):
     def add_user(self, username, password):
-        print(username, password)
+        with open("users.json") as file:
+            users = json.load(file)
+
+        users[username] = {
+            "username": username,
+            "password": password,
+            "created": datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"),
+        }
+
+        with open("users.json", "w") as file:
+            json.dump(users, file)
 
 
 class RootWidget(ScreenManager):
