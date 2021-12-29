@@ -6,7 +6,11 @@ from pathlib import Path
 
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.uix.behaviors import ButtonBehavior
+from kivy.uix.image import Image
 from kivy.uix.screenmanager import Screen, ScreenManager
+
+from hoverable import HoverBehavior
 
 Builder.load_file("design.kv")
 
@@ -69,6 +73,10 @@ class SignUpScreenSuccess(Screen):
 
 
 class RootWidget(ScreenManager):
+    ...
+
+
+class ImageButton(ButtonBehavior, HoverBehavior, Image):
     ...
 
 
