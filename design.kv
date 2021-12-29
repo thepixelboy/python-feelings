@@ -1,3 +1,4 @@
+#:kivy 2.0.0
 <LoginScreen>:
     GridLayout:
         cols: 1
@@ -34,8 +35,19 @@
             text: "Submit"
             on_press: root.add_user(root.ids.username.text, root.ids.password.text)
 
+<SignUpScreenSuccess>:
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Sign up successful!"
+        Button:
+            text: "Return to Login page"
+            on_press: root.login_screen()
+
 <RootWidget>:
     LoginScreen:
         name: "login_screen"
     SignUpScreen:
         name: "sign_up_screen"
+    SignUpScreenSuccess:
+        name: "sign_up_screen_success"
